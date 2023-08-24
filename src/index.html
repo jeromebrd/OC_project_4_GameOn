@@ -60,7 +60,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
@@ -71,6 +70,7 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -82,6 +82,7 @@
                   id="last"
                   name="last"
                   minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -186,14 +187,16 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  name="conditions"
                   checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" name="next-event"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
