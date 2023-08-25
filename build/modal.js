@@ -2,7 +2,7 @@
 // DOM Elements
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
-const closeBtn = document.querySelector('.close');
+const closesBtn = document.querySelectorAll('.close-modal');
 const formData = document.querySelectorAll('.formData');
 // DOM elem (Form)
 const formElem = document.querySelector('form');
@@ -42,7 +42,8 @@ function launchModal() {
     }
 }
 // close modal event
-closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener('click', closeModal);
+closesBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+// closeBtn?.addEventListener('click', closeModal);
 // close modal
 function closeModal() {
     if (modalbg instanceof HTMLElement) {
@@ -148,9 +149,15 @@ const validate = (e) => {
         checkCheckboxInput) {
         // if each input is verified => applying code behind
         console.log('form ok !');
+        const thanksElem = document.querySelector('.thanks-visiting');
+        if (formElem != null && thanksElem != null) {
+            formElem.style.display = 'none';
+            thanksElem.style.display = 'flex';
+        }
     }
     else {
         console.log('form : invalide');
     }
 };
+console.log(modalBtn);
 formElem === null || formElem === void 0 ? void 0 : formElem.addEventListener('submit', (e) => validate(e));

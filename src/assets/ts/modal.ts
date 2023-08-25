@@ -9,9 +9,10 @@ interface ErrorMessages {
 }
 
 // DOM Elements
-const modalbg = document.querySelector('.bground');
+const modalbg: HTMLElement | null = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
-const closeBtn = document.querySelector('.close');
+const closesBtn: NodeListOf<HTMLElement> =
+  document.querySelectorAll('.close-modal');
 const formData = document.querySelectorAll('.formData');
 
 // DOM elem (Form)
@@ -60,7 +61,8 @@ function launchModal() {
   }
 }
 // close modal event
-closeBtn?.addEventListener('click', closeModal);
+closesBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+// closeBtn?.addEventListener('click', closeModal);
 
 // close modal
 function closeModal() {
@@ -201,9 +203,15 @@ const validate = (e: Event) => {
   ) {
     // if each input is verified => applying code behind
     console.log('form ok !');
+    const thanksElem: HTMLElement | null =
+      document.querySelector('.thanks-visiting');
+    if (formElem != null && thanksElem != null) {
+      formElem.style.display = 'none';
+      thanksElem.style.display = 'flex';
+    }
   } else {
     console.log('form : invalide');
   }
 };
-
+console.log(modalBtn);
 formElem?.addEventListener('submit', (e: Event) => validate(e));
