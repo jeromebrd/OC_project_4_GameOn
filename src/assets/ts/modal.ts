@@ -10,10 +10,12 @@ interface ErrorMessages {
 
 // DOM Elements
 const modalbg: HTMLElement | null = document.querySelector('.bground');
-const modalBtn = document.querySelectorAll('.modal-btn');
+const modalBtn: NodeListOf<HTMLElement> =
+  document.querySelectorAll('.modal-btn');
 const closesBtn: NodeListOf<HTMLElement> =
   document.querySelectorAll('.close-modal');
-const formData = document.querySelectorAll('.formData');
+const formData: NodeListOf<HTMLElement> =
+  document.querySelectorAll('.formData');
 
 // DOM elem (Form)
 const formElem: HTMLFormElement | null = document.querySelector('form');
@@ -62,7 +64,6 @@ function launchModal() {
 }
 // close modal event
 closesBtn.forEach((btn) => btn.addEventListener('click', closeModal));
-// closeBtn?.addEventListener('click', closeModal);
 
 // close modal
 function closeModal() {
@@ -82,9 +83,8 @@ const hideErrorMessage = (elem: HTMLInputElement) => {
   elem.parentElement?.removeAttribute('data-error');
 };
 
-// conditions of validation form
-
-// Text input
+// conditions of validation form. I created a function for each input type.
+// Text input (reusable)
 const validInput = (
   elem: HTMLInputElement,
   message: string,
@@ -202,7 +202,6 @@ const validate = (e: Event) => {
     checkCheckboxInput
   ) {
     // if each input is verified => applying code behind
-    console.log('form ok !');
     const thanksElem: HTMLElement | null =
       document.querySelector('.thanks-visiting');
     if (formElem != null && thanksElem != null) {
@@ -213,5 +212,4 @@ const validate = (e: Event) => {
     console.log('form : invalide');
   }
 };
-console.log(modalBtn);
 formElem?.addEventListener('submit', (e: Event) => validate(e));
