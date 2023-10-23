@@ -12,7 +12,7 @@ interface ErrorMessages {
 const modalbg: HTMLElement | null = document.querySelector('.bground');
 const modalBtn: NodeListOf<HTMLElement> =
   document.querySelectorAll('.modal-btn');
-const closesBtn: NodeListOf<HTMLElement> =
+const closeBtns: NodeListOf<HTMLElement> =
   document.querySelectorAll('.close-modal');
 const formData: NodeListOf<HTMLElement> =
   document.querySelectorAll('.formData');
@@ -63,7 +63,7 @@ function launchModal() {
   }
 }
 // close modal event
-closesBtn.forEach((btn) => btn.addEventListener('click', closeModal));
+closeBtns.forEach((btn) => btn.addEventListener('click', closeModal));
 
 // close modal
 function closeModal() {
@@ -84,7 +84,7 @@ const hideErrorMessage = (elem: HTMLInputElement) => {
 };
 
 // conditions of validation form. I created a function for each input type.
-// Text input (reusable)
+// Text input
 const validInput = (
   elem: HTMLInputElement,
   message: string,
@@ -128,6 +128,7 @@ const validRadioInput = (
   elems.forEach((elem) => hideErrorMessage(elem));
   return true;
 };
+
 // Generals Terms Input
 const validCheckInput = (elem: HTMLInputElement, message: string) => {
   if (!elem.checked) {
